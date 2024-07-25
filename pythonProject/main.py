@@ -48,7 +48,7 @@ df['Official Website'] = None
 try:
     for index, row in df.iterrows():
         nbfc_name = row['NBFC Name']
-        nbfc_name=nbfc_name.replace("*","").replace(".","").replace("Ltd","").replace("Limited","").replace("[","(").replace("]",")").replace("{","(").replace("}",")").strip()
+        nbfc_name=nbfc_name.replace("*","").replace(".","").replace("Ltd","").replace("Limited","").replace("[","(").replace("]",")").replace("{","(").replace("}",")").replace("  "," ").strip()
         x=nbfc_name.find("(")
         if x>=0:
             tempname=''
