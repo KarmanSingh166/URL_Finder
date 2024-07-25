@@ -27,10 +27,7 @@ def is_valid_official_website(url, nbfc_name):
                 meta_description = meta_tag['content'].lower()
 
             if nbfc_name.lower() in title or nbfc_name.lower() in meta_description:
-                if not "facebook" in title:
-                    return True
-                else:
-                    return False
+                return True
         return False
     except Exception as e:
         return False
