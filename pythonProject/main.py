@@ -44,9 +44,10 @@ df = df.drop(columns=['NaN'])
 print("Column names:", df.columns.tolist())
 df['Official Website'] = None
 
-
+count=0
 try:
     for index, row in df.iterrows():
+        count+=1
         nbfc_name = row['NBFC Name']
         nbfc_name=nbfc_name.replace("*","").replace(".","").replace("Ltd","").replace("Limited","").replace("[","(").replace("]",")").replace("{","(").replace("}",")").replace("  "," ").strip()
         x=nbfc_name.find("(")
@@ -72,9 +73,9 @@ try:
 except:
     df.to_excel(output_file, index=False)
     end = time.time()
-    print(f"Time taken = {end - start} seconds")
+    print(f"Time taken = {end - start} seconds for {count} items")
 else:
     df.to_excel(output_file, index=False)
     print("Completed! The output is saved in", output_file)
     end = time.time()
-    print(f"Time taken = {end - start} seconds")
+    print(f"Time taken = {end - start} seconds for {count} items")
