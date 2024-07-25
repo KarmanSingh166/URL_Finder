@@ -2,7 +2,8 @@ import pandas as pd
 from googlesearch import search
 import requests
 from bs4 import BeautifulSoup
-
+import time
+start=time.time()
 
 def get_official_website(nbfc_name):
     query = f"{nbfc_name} official site"
@@ -70,7 +71,10 @@ try:
         df.at[index, 'Official Website'] = official_website
 except:
     df.to_excel(output_file, index=False)
+    end = time.time()
+    print(f"Time taken = {end - start} seconds")
 else:
     df.to_excel(output_file, index=False)
-
     print("Completed! The output is saved in", output_file)
+    end = time.time()
+    print(f"Time taken = {end - start} seconds")
